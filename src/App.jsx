@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
 import MoodSelector from './components/MoodSelector';
 import WeatherCard from './components/WeatherCard';
 import SongList from './components/SongList';
@@ -11,6 +11,7 @@ import { useDebounce } from './hooks/useDebounce';
 import './index.css';
 
 function App() {
+  const [activeTab, setActiveTab] = useState('Dashboard');
   const [weather, setWeather] = useState(null);
   const [mood, setMood] = useState('Chill');
   const [songs, setSongs] = useState([]);
@@ -26,13 +27,12 @@ function App() {
   });
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const saved = localStorage.getItem('moodcast_theme');
-    return saved === 'dark' || !saved; // Default to dark
+    return saved === 'dark' || !saved;
   });
 
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
   const moods = ['Happy', 'Sad', 'Chill', 'Energetic'];
 
-  // Handle Theme
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
@@ -43,7 +43,6 @@ function App() {
     }
   }, [isDarkMode]);
 
-  // Handle Favorites Persistence
   useEffect(() => {
     localStorage.setItem('moodcast_favorites', JSON.stringify(favorites));
   }, [favorites]);
@@ -55,7 +54,7 @@ function App() {
       const data = await fetchWeather(city);
       setWeather(data);
     } catch (err) {
-      setError('Could not find weather for this city.');
+      setError(err.message || 'Could not find weather for this city.');
       setWeather(null);
     } finally {
       setLoading(false);
@@ -86,14 +85,14 @@ function App() {
     }
   };
 
-  // Build query from Weather + Mood
   useEffect(() => {
-    const weatherType = weather?.weather[0]?.main || 'Clear';
-    const searchQuery = getQuery(weatherType, mood);
-    handleFetchSongs(searchQuery);
-  }, [weather, mood]);
+    if (activeTab === 'Dashboard') {
+      const weatherType = weather?.weather[0]?.main || 'Clear';
+      const searchQuery = getQuery(weatherType, mood);
+      handleFetchSongs(searchQuery);
+    }
+  }, [weather, mood, activeTab]);
 
-  // Handle debounced search
   useEffect(() => {
     if (debouncedSearchTerm) {
       handleFetchSongs(debouncedSearchTerm);
@@ -109,24 +108,17 @@ function App() {
     }
   };
 
-  // Higher-Order Functions (Filter & Sort)
   const processedSongs = useMemo(() => {
     let result = [...songs];
-
-    // Filter by "Short" - Simulated since YouTube Search API doesn't give duration in snippet
-    // We'll mark videos with "Short" in title as short if duration isn't available
     if (filterShort) {
       result = result.filter(song => 
         song.snippet.title.toLowerCase().includes('short') || 
-        song.snippet.title.length < 40 // Heuristic for shorter content titles
+        song.snippet.title.length < 40
       );
     }
-
-    // Sort by Title (A-Z)
     if (sortBy === 'title') {
       result.sort((a, b) => a.snippet.title.localeCompare(b.snippet.title));
     }
-
     return result;
   }, [songs, sortBy, filterShort]);
 
@@ -137,82 +129,106 @@ function App() {
   };
 
   return (
-    <div className="App fade-in">
-      <Navbar isDarkMode={isDarkMode} toggleTheme={() => setIsDarkMode(!isDarkMode)} />
+    <div className="App">
+      <Sidebar 
+        activeTab={activeTab} 
+        onTabChange={setActiveTab} 
+        isDarkMode={isDarkMode}
+        toggleTheme={() => setIsDarkMode(!isDarkMode)}
+      />
       
-      <main className="container">
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginBottom: '8rem' }}>
-          <SearchBar 
-            onSearch={setSearchTerm} 
-            onWeatherSearch={handleSearchWeather} 
-          />
-          
-          <MoodSelector 
-            moods={moods} 
-            activeMood={mood} 
-            onSelect={setMood} 
-          />
+      <main className="main-content">
+        <SearchBar 
+          onSearch={setSearchTerm} 
+          onWeatherSearch={handleSearchWeather} 
+        />
 
-          {weather && (
+        {activeTab === 'Dashboard' && (
+          <div className="fade-in">
             <WeatherCard 
               weather={weather} 
               explanation={explanation()} 
             />
-          )}
 
-          <div className="glass" style={{ padding: '1rem', display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-            <span style={{ fontWeight: '600' }}>Filters:</span>
-            <button 
-              onClick={() => setFilterShort(!filterShort)}
-              className={filterShort ? 'glass' : ''}
-              style={{ padding: '0.4rem 0.8rem', background: filterShort ? 'var(--accent)' : 'transparent', color: filterShort ? 'var(--bg)' : 'var(--text)', border: '1px solid var(--glass-border)' }}
-            >
-              Short Videos (&lt; 5m)
-            </button>
-            <div style={{ marginLeft: 'auto', display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-              <span>Sort:</span>
-              <select 
-                value={sortBy} 
-                onChange={(e) => setSortBy(e.target.value)}
-                className="glass"
-                style={{ padding: '0.4rem', border: 'none', color: 'var(--text)', outline: 'none' }}
+            <MoodSelector 
+              moods={moods} 
+              activeMood={mood} 
+              onSelect={setMood} 
+            />
+
+            <div className="glass" style={{ padding: '1rem', display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap', marginTop: '2rem' }}>
+              <span style={{ fontWeight: '600' }}>Filters:</span>
+              <button 
+                onClick={() => setFilterShort(!filterShort)}
+                style={{ 
+                  padding: '0.4rem 0.8rem', 
+                  background: filterShort ? 'var(--accent)' : 'rgba(255,255,255,0.05)', 
+                  color: filterShort ? 'var(--bg)' : 'var(--text)', 
+                  border: '1px solid var(--glass-border)',
+                  borderRadius: '0.5rem'
+                }}
               >
-                <option value="none">Default</option>
-                <option value="title">Title (A-Z)</option>
-              </select>
+                Short Videos (&lt; 5m)
+              </button>
+              <div style={{ marginLeft: 'auto', display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                <span>Sort:</span>
+                <select 
+                  value={sortBy} 
+                  onChange={(e) => setSortBy(e.target.value)}
+                  style={{ padding: '0.4rem', borderRadius: '0.5rem', outline: 'none' }}
+                >
+                  <option value="none">Default</option>
+                  <option value="title">Title (A-Z)</option>
+                </select>
+              </div>
             </div>
+
+            {error && <p style={{ color: 'var(--error)', marginTop: '1rem' }}>{error}</p>}
+            
+            {loading ? (
+              <div style={{ textAlign: 'center', padding: '3rem' }}>
+                <div className="loader"></div>
+                <p style={{ marginTop: '1rem', color: 'var(--subtext)' }}>Fetching vibes...</p>
+              </div>
+            ) : (
+              <div style={{ marginTop: '2rem' }}>
+                <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--accent)' }}>Top Suggestions</h2>
+                <SongList 
+                  songs={processedSongs} 
+                  onSongSelect={setCurrentSong} 
+                  onFavoriteToggle={toggleFavorite}
+                  favorites={favorites}
+                />
+              </div>
+            )}
           </div>
+        )}
 
-          {error && <p style={{ color: 'var(--error)' }}>{error}</p>}
-          
-          {loading ? (
-            <div style={{ textAlign: 'center', padding: '3rem' }}>
-              <div className="loader">Loading vibes...</div>
-            </div>
-          ) : (
-            <>
-              <h2 style={{ fontSize: '1.25rem', color: 'var(--accent)' }}>Top Suggestions</h2>
-              <SongList 
-                songs={processedSongs} 
-                onSongSelect={setCurrentSong} 
-                onFavoriteToggle={toggleFavorite}
-                favorites={favorites}
-              />
-            </>
-          )}
+        {activeTab === 'Moods' && (
+           <div className="fade-in">
+             <h2 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Explore Moods</h2>
+             <MoodSelector 
+               moods={moods} 
+               activeMood={mood} 
+               onSelect={setMood} 
+             />
+           </div>
+        )}
 
-          {favorites.length > 0 && (
-            <div style={{ marginTop: '2rem' }}>
-              <h2 style={{ fontSize: '1.25rem', color: 'var(--accent)', marginBottom: '1rem' }}>Your Favorites ❤️</h2>
-              <SongList 
-                songs={favorites} 
-                onSongSelect={setCurrentSong} 
-                onFavoriteToggle={toggleFavorite}
-                favorites={favorites}
-              />
-            </div>
-          )}
-        </div>
+        {activeTab === 'Playlists' && (
+          <div className="fade-in">
+            <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>Your Favorites ❤️</h2>
+            <SongList 
+              songs={favorites} 
+              onSongSelect={setCurrentSong} 
+              onFavoriteToggle={toggleFavorite}
+              favorites={favorites}
+            />
+          </div>
+        )}
+
+        {/* Padding for player */}
+        <div style={{ height: '120px' }}></div>
       </main>
 
       {currentSong && (

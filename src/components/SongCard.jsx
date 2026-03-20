@@ -7,7 +7,14 @@ const SongCard = ({ song, onSelect, onFavoriteToggle, isFavorite }) => {
   return (
     <div 
       className="glass card-hover fade-in" 
-      style={{ overflow: 'hidden', cursor: 'pointer', position: 'relative' }}
+      style={{ 
+        overflow: 'hidden', 
+        cursor: 'pointer', 
+        position: 'relative',
+        borderRadius: '1.25rem',
+        background: 'rgba(255, 255, 255, 0.03)',
+        border: '1px solid rgba(255, 255, 255, 0.05)'
+      }}
       onClick={() => onSelect(song)}
     >
       <button 
@@ -18,19 +25,20 @@ const SongCard = ({ song, onSelect, onFavoriteToggle, isFavorite }) => {
         className="btn-scale"
         style={{
           position: 'absolute',
-          top: '0.5rem',
-          right: '0.5rem',
-          background: 'rgba(0,0,0,0.4)',
-          color: isFavorite ? 'var(--error)' : 'white',
+          top: '0.75rem',
+          right: '0.75rem',
+          background: 'rgba(0,0,0,0.5)',
+          backdropFilter: 'blur(8px)',
+          color: isFavorite ? '#ff4b4b' : 'white',
           borderRadius: '50%',
-          width: '40px',
-          height: '40px',
+          width: '36px',
+          height: '36px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           padding: 0,
-          fontSize: '1.2rem',
-          border: '1px solid var(--glass-border)',
+          fontSize: '1rem',
+          border: '1px solid rgba(255,255,255,0.1)',
           zIndex: 10
         }}
       >
@@ -40,21 +48,23 @@ const SongCard = ({ song, onSelect, onFavoriteToggle, isFavorite }) => {
       <img 
         src={thumbnails.medium.url} 
         alt={title} 
-        style={{ width: '100%', height: '180px', objectFit: 'cover' }}
+        style={{ width: '100%', height: '160px', objectFit: 'cover' }}
       />
       <div style={{ padding: '1.25rem' }}>
         <h4 style={{ 
-          fontSize: '0.95rem', 
+          fontSize: '0.9rem', 
+          fontWeight: '500',
           marginBottom: '0.5rem', 
           display: '-webkit-box', 
           WebkitLineClamp: 2, 
           WebkitBoxOrient: 'vertical', 
           overflow: 'hidden',
-          lineHeight: '1.4'
+          lineHeight: '1.4',
+          color: 'var(--text)'
         }}>
           {title}
         </h4>
-        <p style={{ fontSize: '0.8rem', color: 'var(--subtext)' }}>{channelTitle}</p>
+        <p style={{ fontSize: '0.75rem', color: 'var(--subtext)' }}>{channelTitle}</p>
       </div>
     </div>
   );

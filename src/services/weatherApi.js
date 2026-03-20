@@ -12,11 +12,18 @@ export const fetchWeather = async (city) => {
   }
 
   try {
+    console.log(`Fetching weather for: ${city}...`);
     const response = await fetch(`${BASE_URL}?q=${city}&appid=${API_KEY}&units=metric`);
-    if (!response.ok) throw new Error('City not found');
-    return await response.json();
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error('Weather API Error:', errorData);
+      throw new Error(`City not found: ${errorData.message}`);
+    }
+    const data = await response.json();
+    console.log('Weather Data Received:', data);
+    return data;
   } catch (error) {
-    console.error('Error fetching weather:', error);
+    console.error('Fetch Weather Failed:', error.message);
     throw error;
   }
 };
