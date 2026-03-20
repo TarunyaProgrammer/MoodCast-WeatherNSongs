@@ -1,6 +1,8 @@
 import React from 'react';
+import { Heart } from 'lucide-react';
 
-const SongCard = ({ song, onSelect, onFavoriteToggle, isFavorite }) => {
+const SongCard = ({ song, onSelect, onFavoriteToggle, favorites }) => {
+  const isFavorite = favorites.some(f => f.id.videoId === song.id.videoId);
   const { snippet } = song;
   const { title, channelTitle, thumbnails } = snippet;
 
@@ -33,16 +35,16 @@ const SongCard = ({ song, onSelect, onFavoriteToggle, isFavorite }) => {
           borderRadius: '50%',
           width: '36px',
           height: '36px',
+          verticalAlign: 'middle',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           padding: 0,
-          fontSize: '1rem',
           border: '1px solid rgba(255,255,255,0.1)',
           zIndex: 10
         }}
       >
-        {isFavorite ? '❤️' : '🤍'}
+        <Heart size={18} fill={isFavorite ? '#ff4b4b' : 'none'} />
       </button>
 
       <img 

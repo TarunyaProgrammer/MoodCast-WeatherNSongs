@@ -1,4 +1,5 @@
 import React from 'react';
+import { Cloud } from 'lucide-react';
 
 const WeatherCard = ({ weather, explanation }) => {
   if (!weather) {
@@ -8,7 +9,9 @@ const WeatherCard = ({ weather, explanation }) => {
           <h2>Ready to sync?</h2>
           <p style={{ color: 'var(--subtext)' }}>Enter your city to discover weather-inspired music.</p>
         </div>
-        <div style={{ fontSize: '4rem' }}>☁️</div>
+        <div style={{ fontSize: '4rem', color: 'var(--accent)', opacity: 0.5 }}>
+          <Cloud size={64} />
+        </div>
       </div>
     );
   }

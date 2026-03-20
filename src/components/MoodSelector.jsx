@@ -1,4 +1,5 @@
 import React from 'react';
+import { Sun, CloudRain, Coffee, Zap } from 'lucide-react';
 
 const MoodSelector = ({ moods, activeMood, onSelect }) => {
   return (
@@ -26,11 +27,11 @@ const MoodSelector = ({ moods, activeMood, onSelect }) => {
               alignItems: 'center'
             }}
           >
-            <span style={{ fontSize: '1.5rem' }}>
-              {mood === 'Happy' && '☀️'}
-              {mood === 'Sad' && '🌧️'}
-              {mood === 'Chill' && '🧘'}
-              {mood === 'Energetic' && '⚡'}
+            <span style={{ fontSize: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              {mood === 'Happy' && <Sun size={24} />}
+              {mood === 'Sad' && <CloudRain size={24} />}
+              {mood === 'Chill' && <Coffee size={24} />}
+              {mood === 'Energetic' && <Zap size={24} />}
             </span>
             <span style={{ fontWeight: '600', fontSize: '0.9rem' }}>{mood}</span>
           </div>

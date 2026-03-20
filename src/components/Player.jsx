@@ -1,4 +1,5 @@
 import React from 'react';
+import { Play, Pause, SkipBack, SkipForward, Volume2, X } from 'lucide-react';
 
 const Player = ({ song, onClose }) => {
   if (!song) return null;
@@ -18,9 +19,9 @@ const Player = ({ song, onClose }) => {
 
       <div className="player-controls">
         <div className="control-btns">
-          <button className="control-btn">⏮</button>
-          <button className="control-btn play">▶</button>
-          <button className="control-btn">⏭</button>
+          <button className="control-btn"><SkipBack size={20} fill="currentColor" /></button>
+          <button className="control-btn play"><Play size={20} fill="currentColor" /></button>
+          <button className="control-btn"><SkipForward size={20} fill="currentColor" /></button>
         </div>
         <div className="progress-bar">
           <div className="progress-fill" style={{ width: '35%' }}></div>
@@ -29,12 +30,15 @@ const Player = ({ song, onClose }) => {
 
       <div className="player-extra">
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', width: '100px' }}>
-          <span>🔊</span>
+          <Volume2 size={18} />
           <div className="progress-bar" style={{ height: '3px' }}>
             <div className="progress-fill" style={{ width: '70%' }}></div>
           </div>
         </div>
-        <button onClick={onClose} className="close-btn">Close X</button>
+        <button onClick={onClose} className="close-btn" style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+          <X size={14} />
+          Close
+        </button>
       </div>
 
       {/* Hidden Iframe for actual playback */}

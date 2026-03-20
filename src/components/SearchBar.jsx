@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Search } from 'lucide-react';
 
 const SearchBar = ({ onSearch, onWeatherSearch }) => {
   const [input, setInput] = useState('');
@@ -22,12 +23,12 @@ const SearchBar = ({ onSearch, onWeatherSearch }) => {
           onKeyDown={handleKeyDown}
         />
         <span style={{ position: 'absolute', right: '1.5rem', top: '50%', transform: 'translateY(-50%)', opacity: 0.5 }}>
-          🔍
+          <Search size={18} />
         </span>
       </div>
       <button 
         className="glass btn-scale" 
-        style={{ padding: '0 2rem', color: 'var(--accent)', fontWeight: '600' }}
+        style={{ padding: '0 2rem', color: 'var(--accent)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
         onClick={() => {
           if (input.trim()) {
             onWeatherSearch(input);
@@ -35,6 +36,7 @@ const SearchBar = ({ onSearch, onWeatherSearch }) => {
           }
         }}
       >
+        <Search size={16} />
         Search
       </button>
     </div>
