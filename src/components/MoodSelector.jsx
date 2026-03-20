@@ -3,9 +3,9 @@ import { Sun, CloudRain, Coffee, Zap } from 'lucide-react';
 
 const MoodSelector = ({ moods, activeMood, onSelect }) => {
   return (
-    <div className="glass" style={{ padding: '2rem', marginTop: '2.5rem' }}>
-      <h3 style={{ marginBottom: '1.5rem', fontSize: '1.1rem', fontWeight: '500', color: 'var(--subtext)' }}>Current Mood</h3>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
+    <div className="glass mood-selector-container">
+      <h3 className="section-title">Current Mood</h3>
+      <div className="mood-grid">
         {moods.map((mood) => (
           <div
             key={mood}

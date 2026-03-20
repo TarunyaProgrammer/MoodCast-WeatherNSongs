@@ -392,6 +392,24 @@ body {
   .analytics-container > div { flex-wrap: wrap; }
 }
 
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.mood-selector-container {
+  padding: 2rem;
+  margin-top: 2.5rem;
+}
+
+.section-title {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--subtext);
+}
+
 /* Mobile Responsiveness & Bottom Nav Overhaul */
 .bottom-nav {
   display: none;
@@ -442,12 +460,14 @@ body {
 @media (max-width: 850px) {
   body {
     overflow: auto !important;
+    height: auto !important;
   }
 
   .App {
     height: auto;
     min-height: 100vh;
-    flex-direction: column;
+    display: block; /* Remove flex on App for mobile to avoid layout clipping */
+    position: relative;
   }
 
   .sidebar { 
@@ -457,31 +477,36 @@ body {
   .main-content {
     margin-left: 0;
     padding: 1.25rem;
-    padding-bottom: 8rem;
-    overflow-y: visible;
+    padding-bottom: 9rem; /* Increased padding for bottom nav */
+    width: 100%;
+    overflow: visible;
   }
 
   .bottom-nav {
     display: flex;
+    position: fixed;
     bottom: 1.5rem;
     left: 1rem;
     right: 1rem;
     width: auto;
-    z-index: 9999;
-    border: 1px solid rgba(56, 189, 248, 0.5); /* Vivid border for visibility */
-    background: rgba(15, 23, 42, 0.95);
+    z-index: 99999; /* Max z-index */
+    background: rgba(10, 15, 30, 0.98); /* Slightly darker for contrast */
+    border: 1px solid var(--accent);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
   }
 
-  .btn-search {
-    width: 100%;
-    justify-content: center;
-    padding: 1rem !important;
-    height: auto !important;
+  .mood-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .mood-selector-container {
+    padding: 1.25rem;
   }
 
   .search-container {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
   }
 
   .search-container > div {
