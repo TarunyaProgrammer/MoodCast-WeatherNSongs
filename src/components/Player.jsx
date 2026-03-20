@@ -1,48 +1,30 @@
 import React from 'react';
-import { Play, Pause, SkipBack, SkipForward, Volume2, X } from 'lucide-react';
+import { X } from 'lucide-react';
 
 const Player = ({ song, onClose }) => {
   if (!song) return null;
 
   const { videoId } = song.id;
-  const { title, channelTitle, thumbnails } = song.snippet;
 
   return (
-    <div className="player-premium slide-up">
-      <div className="player-track">
-        <img src={thumbnails.medium.url} alt={title} className="track-img" />
-        <div style={{ overflow: 'hidden' }}>
-          <h4 style={{ fontSize: '0.9rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{title}</h4>
-          <p style={{ fontSize: '0.75rem', color: 'var(--subtext)' }}>{channelTitle}</p>
-        </div>
-      </div>
-
-      <div className="player-controls">
-        <div className="control-btns">
-          <button className="control-btn"><SkipBack size={20} fill="currentColor" /></button>
-          <button className="control-btn play"><Play size={20} fill="currentColor" /></button>
-          <button className="control-btn"><SkipForward size={20} fill="currentColor" /></button>
-        </div>
-        <div className="progress-bar">
-          <div className="progress-fill" style={{ width: '35%' }}></div>
-        </div>
-      </div>
-
-      <div className="player-extra">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', width: '100px' }}>
-          <Volume2 size={18} />
-          <div className="progress-bar" style={{ height: '3px' }}>
-            <div className="progress-fill" style={{ width: '70%' }}></div>
-          </div>
-        </div>
+    <div className="glass slide-up" style={{
+      position: 'fixed',
+      bottom: '2rem',
+      right: '2rem',
+      width: '400px',
+      zIndex: 1000,
+      padding: '1rem',
+      boxShadow: '0 20px 50px rgba(0,0,0,0.5)'
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+        <h4 style={{ fontSize: '0.9rem', color: 'var(--accent)' }}>Now Playing</h4>
         <button onClick={onClose} className="close-btn" style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
           <X size={14} />
           Close
         </button>
       </div>
-
-      {/* Hidden Iframe for actual playback */}
-      <div style={{ position: 'absolute', width: 1, height: 1, opacity: 0, pointerEvents: 'none' }}>
+      
+      <div style={{ borderRadius: '0.75rem', overflow: 'hidden', aspectRatio: '16/9' }}>
         <iframe
           width="100%"
           height="100%"
