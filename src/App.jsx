@@ -5,6 +5,7 @@ import WeatherCard from './components/WeatherCard';
 import SongList from './components/SongList';
 import Player from './components/Player';
 import SearchBar from './components/SearchBar';
+import Analytics from './components/Analytics';
 import { fetchWeather } from './services/weatherApi';
 import { fetchSongs } from './services/youtubeApi';
 import { useDebounce } from './hooks/useDebounce';
@@ -216,6 +217,8 @@ function App() {
              />
            </div>
         )}
+
+        {activeTab === 'Analytics' && <Analytics />}
 
         {activeTab === 'Playlists' && (
           <div className="fade-in">
