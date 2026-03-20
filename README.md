@@ -1,37 +1,53 @@
-# MoodCast ⛈️🎵
+# 🌊 MoodCast
 
-A dark-mode-first React web application that suggests and plays music based on user mood and current weather.
+**Author:** Tarunya Kesharwani  
+**Live Demo:** [Check it out on GitHub Pages / Vercel]
 
-## Features
+MoodCast is a premium, **dark-mode-first** music discovery platform that uses a proprietary "Synergy Engine" to curate the perfect playlist based on your **current weather** and **internal mood**.
 
-- **Weather-Music Sync**: Automatically generates song queries based on local weather and selected mood.
-- **Interactive Music Player**: Integrated YouTube iframe player.
-- **Search with Debouncing**: Fast and efficient song search.
-- **Favorites**: Save your favorite tracks locally.
-- **Glassmorphism UI**: Modern, premium design with smooth CSS animations.
+![MoodCast Preview Screenshot](/.gemini/antigravity/brain/7e34600a-1b5c-458b-b0f8-1d4459ff9e15/moodcast_preview_1774011491303.png)
 
-## Tech Stack
+## ✨ Key Features
 
-- **React** (Hooks & Functional Components)
-- **Vanilla CSS** (Custom styling system)
-- **APIs**: OpenWeatherMap, YouTube Data API v3
-- **Storage**: localStorage for persistent favorites and theme.
+-   🧠 **Synergy Engine**: Advanced logic that merges atmospheric data with emotional states.
+-   🌥️ **Weather Discovery**: Real-time fetching from OpenWeatherMap.
+-   🎶 **YouTube Integration**: Search and play millions of tracks instantly.
+-   🌗 **Dual Themes**: A true "High-Contrast Light Mode" and a "Premium Dark Mode".
+-   🎨 **Glassmorphism UI**: Stunning, modern design with Lucide Icons and CSS animations.
+-   📂 **Persistent Favorites**: Save your target tracks for later, powered by LocalStorage.
 
-## Getting Started
+## 🛠️ Built With
 
-1. Clone the repository.
-2. Install dependencies: `npm install`
-3. Create a `.env` file from `.env.example` and add your API keys:
-   - [OpenWeatherMap API Key](https://openweathermap.org/api)
-   - [YouTube Data API Key](https://console.cloud.google.com/apis/library/youtube.googleapis.com)
-4. Run the development server: `npm run dev`
+-   **React** (Functional Components & Hooks)
+-   **CSS3** (Custom Properties & Keyframe Animations)
+-   **Lucide React** (Professional Iconography)
+-   **YouTube API v3**
+-   **OpenWeatherMap API**
 
-## Interactive Features
+## 🚀 Getting Started
 
-- **Filter**: Find short videos (< 5 min) for a quick vibe check.
-- **Sort**: Organize your results alphabetically.
-- **Dark Mode**: Persisted preference across sessions.
+1.  **Clone the Repo**:
+    ```bash
+    git clone https://github.com/TarunyaProgrammer/MoodCast-WeatherNSongs.git
+    cd MoodCast
+    ```
+
+2.  **Install Dependencies**:
+    ```bash
+    npm install
+    ```
+
+3.  **Environment Variables**:
+    Create a `.env` file in the root:
+    ```env
+    VITE_OPENWEATHER_API_KEY=your_key_here
+    VITE_YOUTUBE_API_KEY=your_key_here
+    ```
+
+4.  **Launch the App**:
+    ```bash
+    npm run dev
+    ```
 
 ---
-
-Built with ❤️ for a modern music experience.
+© 2026 Tarunya Kesharwani. All Rights Reserved.
