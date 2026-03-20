@@ -27,8 +27,7 @@ const SearchBar = ({ onSearch, onWeatherSearch }) => {
         </span>
       </div>
       <button 
-        className="glass btn-scale" 
-        style={{ padding: '0 2rem', color: 'var(--accent)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+        className="glass btn-search" 
         onClick={() => {
           if (input.trim()) {
             onWeatherSearch(input);
@@ -37,7 +36,7 @@ const SearchBar = ({ onSearch, onWeatherSearch }) => {
         }}
       >
         <Search size={16} />
-        Search
+        <span>Search</span>
       </button>
     </div>
   );
