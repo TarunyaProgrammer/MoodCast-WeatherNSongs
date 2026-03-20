@@ -4,30 +4,31 @@
  */
 import React from 'react';
 import Logo from './Logo';
-import { LayoutDashboard, Music, Smile, BarChart2, Settings, Sun, Moon, User } from 'lucide-react';
+import { LayoutDashboard, Music, Smile, BarChart2, Sun, Moon } from 'lucide-react';
 
 const Sidebar = ({ activeTab, onTabChange, isDarkMode, toggleTheme }) => {
   const navItems = [
-    { title: 'Dashboard', icon: <LayoutDashboard size={20} /> },
-    { title: 'Playlists', icon: <Music size={20} /> },
-    { title: 'Moods', icon: <Smile size={20} /> },
-    { title: 'Analytics', icon: <BarChart2 size={20} /> },
-    { title: 'Settings', icon: <Settings size={20} /> },
+    { id: 'Dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+    { id: 'Playlists', icon: Music, label: 'Playlists' },
+    { id: 'Moods', icon: Smile, label: 'Moods' },
+    { id: 'Analytics', icon: BarChart2, label: 'Analytics' },
   ];
 
   return (
     <aside className="sidebar">
-      <Logo />
+      <div style={{ marginBottom: '3rem' }}>
+        <Logo />
+      </div>
       
-      <nav className="sidebar-nav">
+      <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
         {navItems.map((item) => (
           <div 
-            key={item.title}
-            className={`nav-item ${activeTab === item.title ? 'active' : ''}`}
-            onClick={() => onTabChange(item.title)}
+            key={item.id} 
+            className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
+            onClick={() => onTabChange(item.id)}
           >
-            <span>{item.icon}</span>
-            <span>{item.title}</span>
+            <item.icon size={20} />
+            <span>{item.label}</span>
           </div>
         ))}
       </nav>
@@ -41,11 +42,6 @@ const Sidebar = ({ activeTab, onTabChange, isDarkMode, toggleTheme }) => {
           {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
           <span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
         </button>
-
-        <div className="nav-item">
-          <User size={20} />
-          <span>My Profile</span>
-        </div>
 
         <div style={{ 
           marginTop: '1.5rem', 

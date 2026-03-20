@@ -11,6 +11,7 @@ import SongList from './components/SongList';
 import Player from './components/Player';
 import SearchBar from './components/SearchBar';
 import Analytics from './components/Analytics';
+import BottomNav from './components/BottomNav';
 import { fetchWeather } from './services/weatherApi';
 import { fetchSongs } from './services/youtubeApi';
 import { useDebounce } from './hooks/useDebounce';
@@ -247,6 +248,8 @@ function App() {
           onClose={() => setCurrentSong(null)} 
         />
       )}
+
+      <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
     </div>
   );
 }
