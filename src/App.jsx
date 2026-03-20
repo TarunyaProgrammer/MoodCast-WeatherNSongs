@@ -1,3 +1,8 @@
+/**
+ * MoodCast - AI Music Dashboard
+ * Author: Tarunya Kesharwani
+ * Built for: Advanced Web Development Project
+ */
 import { useState, useEffect, useMemo } from 'react';
 import Sidebar from './components/Sidebar';
 import MoodSelector from './components/MoodSelector';
