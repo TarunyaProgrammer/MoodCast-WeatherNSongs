@@ -1,3 +1,7 @@
+/**
+ * MoodCast - Synergy Engine Analytics
+ * Author: Tarunya Kesharwani
+ */
 import React from 'react';
 import { CloudSun, Heart, Zap, Youtube, ArrowRight, Sparkles } from 'lucide-react';
 

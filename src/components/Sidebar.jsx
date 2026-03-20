@@ -1,3 +1,7 @@
+/**
+ * MoodCast - Sidebar Navigation
+ * Author: Tarunya Kesharwani
+ */
 import React from 'react';
 import Logo from './Logo';
 import { LayoutDashboard, Music, Smile, BarChart2, Settings, Sun, Moon, User } from 'lucide-react';

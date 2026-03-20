@@ -49,5 +49,11 @@ MoodCast is a premium, **dark-mode-first** music discovery platform that uses a 
     npm run dev
     ```
 
+## 📜 License
+
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**.
+- **Attribution**: You must give appropriate credit to **Tarunya Kesharwani**.
+- **Non-Commercial**: You may not use this material for commercial purposes.
+
 ---
 © 2026 Tarunya Kesharwani. All Rights Reserved.
