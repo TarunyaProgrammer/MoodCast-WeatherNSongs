@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
 :root {
+  /* Default: Dark Mode (App is dark-first) */
   --bg: #0f172a;
   --sidebar: #0a0f1e;
   --card: rgba(30, 41, 59, 0.7);
@@ -11,18 +12,28 @@
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.08);
   --sidebar-width: 260px;
+  --grad-1: #172554;
+  --grad-2: #0c4a6e;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+body.light-mode {
+  --bg: #f8fafc;
+  --sidebar: #f1f5f9;
+  --card: rgba(255, 255, 255, 0.8);
+  --accent: #0ea5e9;
+  --accent-glow: rgba(14, 165, 233, 0.1);
+  --text: #0f172a;
+  --subtext: #475569;
+  --glass-bg: rgba(0, 0, 0, 0.02);
+  --glass-border: rgba(0, 0, 0, 0.05);
+  --grad-1: #e0f2fe;
+  --grad-2: #bae6fd;
 }
 
 body {
   font-family: 'Outfit', sans-serif;
-  background: radial-gradient(circle at 20% 20%, #172554, transparent 40%),
-              radial-gradient(circle at 80% 30%, #0c4a6e, transparent 40%),
+  background: radial-gradient(circle at 20% 20%, var(--grad-1), transparent 40%),
+              radial-gradient(circle at 80% 30%, var(--grad-2), transparent 40%),
               var(--bg);
   background-attachment: fixed;
   color: var(--text);

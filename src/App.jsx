@@ -36,9 +36,11 @@ function App() {
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
+      document.body.classList.remove('light-mode');
       localStorage.setItem('moodcast_theme', 'dark');
     } else {
       document.body.classList.remove('dark-mode');
+      document.body.classList.add('light-mode');
       localStorage.setItem('moodcast_theme', 'light');
     }
   }, [isDarkMode]);
