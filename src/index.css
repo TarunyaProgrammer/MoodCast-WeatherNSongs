@@ -30,6 +30,12 @@ body.light-mode {
   --grad-2: #bae6fd;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Outfit', sans-serif;
   background: radial-gradient(circle at 20% 20%, var(--grad-1), transparent 40%),
