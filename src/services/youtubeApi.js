@@ -29,14 +29,26 @@ export const fetchSongs = async (query) => {
   }
 
   try {
+    console.log(`[YouTube API] Fetching songs for: "${query}"`);
     const response = await fetch(
       `${BASE_URL}?part=snippet&maxResults=12&q=${encodeURIComponent(query)}&type=video&key=${API_KEY}`
     );
-    if (!response.ok) throw new Error('YouTube search failed');
+    
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      console.error('[YouTube API] Fetch failed:', {
+        status: response.status,
+        statusText: response.statusText,
+        error: errorData.error
+      });
+      throw new Error(`YouTube search failed: ${response.status} ${response.statusText}`);
+    }
+    
     const data = await response.json();
+    console.log(`[YouTube API] Successfully fetched ${data.items?.length || 0} items.`);
     return data.items;
   } catch (error) {
-    console.error('Error fetching songs:', error);
+    console.error('[YouTube API] Network or Parsing Error:', error);
     throw error;
   }
 };

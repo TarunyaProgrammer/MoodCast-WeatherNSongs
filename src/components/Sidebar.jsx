@@ -32,14 +32,33 @@ const Sidebar = ({ activeTab, onTabChange, isDarkMode, toggleTheme }) => {
         ))}
       </nav>
 
-      <div style={{ marginTop: 'auto', padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-        <div className="nav-item" onClick={toggleTheme}>
-          <span>{isDarkMode ? <Sun size={20} /> : <Moon size={20} />}</span>
+      <div style={{ marginTop: 'auto', paddingTop: '2rem' }}>
+        <button 
+          onClick={toggleTheme} 
+          className="nav-item" 
+          style={{ width: '100%', border: 'none', background: 'transparent' }}
+        >
+          {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
           <span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
-        </div>
+        </button>
+
         <div className="nav-item">
-          <span><User size={20} /></span>
+          <User size={20} />
           <span>My Profile</span>
+        </div>
+
+        <div style={{ 
+          marginTop: '1.5rem', 
+          padding: '1rem', 
+          borderRadius: '1rem', 
+          background: 'var(--glass-bg)',
+          textAlign: 'center',
+          fontSize: '0.7rem',
+          color: 'var(--subtext)',
+          border: '1px solid var(--glass-border)'
+        }}>
+          <p>Created with ❤️ by</p>
+          <p style={{ color: 'var(--accent)', fontWeight: '600', marginTop: '0.25rem' }}>Tarunya Kesharwani</p>
         </div>
       </div>
     </aside>
