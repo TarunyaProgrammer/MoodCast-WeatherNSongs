@@ -18,7 +18,7 @@ const SongList = ({ songs, onSongSelect, onFavoriteToggle, favorites }) => {
           song={song} 
           onSelect={onSongSelect} 
           onFavoriteToggle={onFavoriteToggle}
-          isFavorite={favorites?.some(f => f.id.videoId === song.id.videoId)}
+          favorites={favorites}
         />
       ))}
     </div>
