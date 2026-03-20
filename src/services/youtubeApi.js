@@ -41,7 +41,27 @@ export const fetchSongs = async (query) => {
         statusText: response.statusText,
         error: errorData.error
       });
-      throw new Error(`YouTube search failed: ${response.status} ${response.statusText}`);
+      
+      // If quota exceeded or other API error, return mock data instead of throwing
+      console.warn('[YouTube API] Falling back to mock data due to API error.');
+      return [
+        {
+          id: { videoId: 'dQw4w9WgXcQ' },
+          snippet: {
+            title: 'Chill Vibes (Mock)',
+            channelTitle: 'MoodCast Engine',
+            thumbnails: { medium: { url: 'https://images.unsplash.com/photo-1459749411177-042180ce673c?w=400' } }
+          }
+        },
+        {
+          id: { videoId: '5qap5aO4i9A' },
+          snippet: {
+            title: 'Lofi Study Beats (Mock)',
+            channelTitle: 'MoodCast Engine',
+            thumbnails: { medium: { url: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=400' } }
+          }
+        }
+      ];
     }
     
     const data = await response.json();
