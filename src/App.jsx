@@ -87,7 +87,7 @@ function App() {
     try {
       const data = await fetchSongs(searchQuery);
       setSongs(data);
-    } catch (err) {
+    } catch {
       setError('Failed to fetch songs.');
     } finally {
       setLoading(false);

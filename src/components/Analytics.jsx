@@ -7,20 +7,8 @@ import { CloudSun, Heart, Zap, Youtube, ArrowRight, Sparkles } from 'lucide-reac
 
 const StepCard = ({ icon: Icon, title, description, delay }) => (
   <div 
-    className="glass fade-in-staggered" 
-    style={{ 
-      padding: '2rem', 
-      flex: 1, 
-      display: 'flex', 
-      flexDirection: 'column', 
-      alignItems: 'center', 
-      textAlign: 'center',
-      gap: '1rem',
-      animationDelay: `${delay}s`,
-      border: '1px solid var(--glass-border)',
-      position: 'relative',
-      overflow: 'hidden'
-    }}
+    className="glass step-card fade-in-staggered" 
+    style={{ animationDelay: `${delay}s` }}
   >
     <div className="pulse-glow-bg"></div>
     <div className="icon-container" style={{ 
@@ -40,18 +28,18 @@ const StepCard = ({ icon: Icon, title, description, delay }) => (
 const SynergyEngine = () => {
   return (
     <div className="analytics-container fade-in" style={{ padding: '1rem 0' }}>
-      <header style={{ marginBottom: '4rem', textAlign: 'center' }}>
+      <header className="analytics-header-section">
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'var(--accent-glow)', color: 'var(--accent)', padding: '0.5rem 1rem', borderRadius: '2rem', fontSize: '0.85rem', fontWeight: '600', marginBottom: '1.5rem' }}>
           <Sparkles size={14} />
           <span>The Synergy Algorithm</span>
         </div>
-        <h1 style={{ fontSize: '3.5rem', fontWeight: '700', marginBottom: '1rem', letterSpacing: '-0.02em' }}>The Magic Behind <span style={{ color: 'var(--accent)' }}>MoodCast</span></h1>
+        <h1>The Magic Behind <span style={{ color: 'var(--accent)' }}>MoodCast</span></h1>
         <p style={{ fontSize: '1.1rem', color: 'var(--subtext)', maxWidth: '600px', margin: '0 auto' }}>
           Discover how we translate nature's frequency and your emotions into the perfect sonic companion.
         </p>
       </header>
 
-      <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', position: 'relative' }}>
+      <div className="steps-container">
         <StepCard 
           icon={CloudSun} 
           title="Weather Pulse" 
@@ -81,10 +69,10 @@ const SynergyEngine = () => {
         />
       </div>
 
-      <div className="glass" style={{ marginTop: '4rem', padding: '3rem', display: 'flex', alignItems: 'center', gap: '3rem' }}>
+      <div className="glass frequency-card">
         <div style={{ flex: 1 }}>
           <h2 style={{ fontSize: '1.75rem', marginBottom: '1.5rem' }}>Current Frequency</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+          <div className="stat-grid">
             <div className="insight-stat">
               <span className="label">Base Logic</span>
               <span className="value">Contextual Synergy</span>
@@ -103,8 +91,8 @@ const SynergyEngine = () => {
             </div>
           </div>
         </div>
-        <div style={{ width: '1px', height: '150px', background: 'var(--glass-border)' }}></div>
-        <div style={{ flex: 1 }}>
+        <div className="separator-line"></div>
+        <div className="info-content">
           <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem', color: 'var(--accent)' }}>Why it matters?</h3>
           <p style={{ color: 'var(--subtext)', fontSize: '0.95rem', lineHeight: '1.7' }}>
             Standard algorithms only follow what you've heard before. **MoodCast** follows where you are *now*. By syncing with the environment, we create a feedback loop between reality and sound.
