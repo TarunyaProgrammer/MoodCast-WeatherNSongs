@@ -8,15 +8,7 @@ const SongCard = ({ song, onSelect, onFavoriteToggle, favorites }) => {
 
   return (
     <div 
-      className="glass card-hover fade-in" 
-      style={{ 
-        overflow: 'hidden', 
-        cursor: 'pointer', 
-        position: 'relative',
-        borderRadius: '1.25rem',
-        background: 'rgba(255, 255, 255, 0.03)',
-        border: '1px solid rgba(255, 255, 255, 0.05)'
-      }}
+      className="nm-flat song-card fade-in" 
       onClick={() => onSelect(song)}
     >
       <button 
@@ -24,26 +16,10 @@ const SongCard = ({ song, onSelect, onFavoriteToggle, favorites }) => {
           e.stopPropagation();
           onFavoriteToggle(song);
         }}
-        className="btn-scale"
-        style={{
-          position: 'absolute',
-          top: '0.75rem',
-          right: '0.75rem',
-          background: 'rgba(0,0,0,0.5)',
-          backdropFilter: 'blur(8px)',
-          color: isFavorite ? '#ff4b4b' : 'white',
-          borderRadius: '50%',
-          width: '36px',
-          height: '36px',
-          verticalAlign: 'middle',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: 0,
-          border: '1px solid rgba(255,255,255,0.1)',
-          zIndex: 10
-        }}
+        className={`nm-fav-btn ${isFavorite ? 'active' : ''}`}
       >
+        <Heart size={18} fill={isFavorite ? 'var(--accent)' : 'none'} color={isFavorite ? 'var(--accent)' : 'currentColor'} />
+      </button>
         <Heart size={18} fill={isFavorite ? '#ff4b4b' : 'none'} />
       </button>
 

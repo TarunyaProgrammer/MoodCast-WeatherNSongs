@@ -7,15 +7,7 @@ const Player = ({ song, onClose }) => {
   const { videoId } = song.id;
 
   return (
-    <div className="glass slide-up" style={{
-      position: 'fixed',
-      bottom: '2rem',
-      right: '2rem',
-      width: '400px',
-      zIndex: 1000,
-      padding: '1rem',
-      boxShadow: '0 20px 50px rgba(0,0,0,0.5)'
-    }}>
+    <div className="nm-flat player-fixed slide-up">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
         <h4 style={{ fontSize: '0.9rem', color: 'var(--accent)' }}>Now Playing</h4>
         <button onClick={onClose} className="close-btn" style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>

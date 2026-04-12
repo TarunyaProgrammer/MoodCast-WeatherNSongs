@@ -165,17 +165,11 @@ function App() {
               onSelect={setMood} 
             />
 
-            <div className="glass" style={{ padding: '1rem', display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap', marginTop: '2rem' }}>
+            <div className="glass filter-container">
               <span style={{ fontWeight: '600' }}>Filters:</span>
               <button 
                 onClick={() => setFilterShort(!filterShort)}
-                style={{ 
-                  padding: '0.4rem 0.8rem', 
-                  background: filterShort ? 'var(--accent)' : 'rgba(255,255,255,0.05)', 
-                  color: filterShort ? 'var(--bg)' : 'var(--text)', 
-                  border: '1px solid var(--glass-border)',
-                  borderRadius: '0.5rem'
-                }}
+                className={`nm-flat filter-btn ${filterShort ? 'active' : ''}`}
               >
                 Short Videos (&lt; 5m)
               </button>
@@ -184,7 +178,7 @@ function App() {
                 <select 
                   value={sortBy} 
                   onChange={(e) => setSortBy(e.target.value)}
-                  style={{ padding: '0.4rem', borderRadius: '0.5rem', outline: 'none' }}
+                  className="nm-pressed filter-select"
                 >
                   <option value="none">Default</option>
                   <option value="title">Title (A-Z)</option>

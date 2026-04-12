@@ -10,22 +10,7 @@ const MoodSelector = ({ moods, activeMood, onSelect }) => {
           <div
             key={mood}
             onClick={() => onSelect(mood)}
-            className={`btn-scale ${activeMood === mood ? 'active' : ''}`}
-            style={{
-              background: activeMood === mood ? 'var(--accent)' : 'rgba(255,255,255,0.03)',
-              color: activeMood === mood ? 'var(--bg)' : 'var(--text)',
-              padding: '1.5rem 1rem',
-              borderRadius: '1rem',
-              textAlign: 'center',
-              cursor: 'pointer',
-              border: `1px solid ${activeMood === mood ? 'var(--accent)' : 'var(--glass-border)'}`,
-              boxShadow: activeMood === mood ? '0 0 20px var(--accent-glow)' : 'none',
-              transition: 'all 0.3s ease',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '0.5rem',
-              alignItems: 'center'
-            }}
+            className={`mood-btn ${activeMood === mood ? 'active' : ''}`}
           >
             <span style={{ fontSize: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               {mood === 'Happy' && <Sun size={24} />}
