@@ -1,59 +1,72 @@
-# 🌊 MoodCast
+# MoodCast
 
 **Author:** Tarunya Kesharwani  
-**Live Demo:** [tarunya-moodcast.vercel.app](https://tarunya-moodcast.vercel.app/)
+**Deployment:** [Live Application](https://tarunya-moodcast.vercel.app/)
 
-MoodCast is a premium, **dark-mode-first** music discovery platform that uses a proprietary "Synergy Engine" to curate the perfect playlist based on your **current weather** and **internal mood**.
+## Overview
 
-![MoodCast Preview Screenshot](./public/PreView.png)
+MoodCast is an advanced music discovery and dashboard application designed to synchronize auditory experiences with environmental and emotional contexts. Utilizing a specialized algorithmic approach referred to as the "Synergy Engine," the platform aggregates real-time atmospheric data and user-defined mood states to generate precisely curated sonic environments.
 
-## ✨ Key Features
+![MoodCast Preview](./public/PreView.png)
 
--   🧠 **Synergy Engine**: Advanced logic that merges atmospheric data with emotional states.
--   🌥️ **Weather Discovery**: Real-time fetching from OpenWeatherMap.
--   🎶 **YouTube Integration**: Search and play millions of tracks instantly.
--   🌗 **Dual Themes**: A true "High-Contrast Light Mode" and a "Premium Dark Mode".
--   🎨 **Glassmorphism UI**: Stunning, modern design with Lucide Icons and CSS animations.
--   📂 **Persistent Favorites**: Save your target tracks for later, powered by LocalStorage.
+## Technical Features
 
-## 🛠️ Built With
+### The Synergy Engine
+At the core of MoodCast is a proprietary logic layer that merges multi-source data points. The engine processes local weather conditions (temperature, precipitation, visibility) and intersects them with psychological mood profiles to formulate optimized search queries for the YouTube Data API.
 
--   **React** (Functional Components & Hooks)
--   **CSS3** (Custom Properties & Keyframe Animations)
--   **Lucide React** (Professional Iconography)
--   **YouTube API v3**
--   **OpenWeatherMap API**
+### Dynamic Intelligence
+- **Real-time Meteorological Integration**: Connects to the OpenWeatherMap API to retrieve high-fidelity atmospheric data based on geographical location.
+- **Contextual Music Discovery**: Leverages the YouTube Data API v3 to provide a theoretically infinite library of high-resolution audio tracks.
+- **State-Driven UI**: The interface dynamically reconfigures its visual language and recommendations as environment or user input evolves.
 
-## 🚀 Getting Started
+### Design and User Experience
+- **Premium Aesthetics**: Implements a glassmorphic design system utilizing Backdrop Filters, layered gradients, and a modern typography stack.
+- **Adaptive Themes**: Features a dual-thematic engine with a high-contrast Light Mode and a deep-fidelity Dark Mode, managed via CSS Custom Properties and local state persistence.
+- **Optimized Performance**: Utilizes custom hooks for logic isolation, including debouncing for API request optimization and persistent storage for user preferences.
 
-1.  **Clone the Repo**:
-    ```bash
-    git clone https://github.com/TarunyaProgrammer/MoodCast-WeatherNSongs.git
-    cd MoodCast
-    ```
+## Technology Stack
 
-2.  **Install Dependencies**:
-    ```bash
-    npm install
-    ```
+- **Frontend Framework**: React 19 (Utilizing Hooks and Functional Component Architecture)
+- **Styling**: Vanilla CSS3 (Custom Design System, Flex/Grid Layouts, Keyframe Animations)
+- **Iconography**: Lucide React
+- **APIs**: YouTube Data API v3, OpenWeatherMap API
+- **Tooling**: Vite (Build System), ESLint
 
-3.  **Environment Variables**:
-    Create a `.env` file in the root:
-    ```env
-    VITE_OPENWEATHER_API_KEY=your_key_here
-    VITE_YOUTUBE_API_KEY=your_key_here
-    ```
+## Development Setup
 
-4.  **Launch the App**:
-    ```bash
-    npm run dev
-    ```
+### Prerequisites
+- Node.js (Latest stable version recommended)
+- API Keys for OpenWeatherMap and YouTube Data API v3
 
-## 📜 License
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/TarunyaProgrammer/MoodCast-WeatherNSongs.git
+   ```
+
+2. **Install project dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment Variables:**
+   Create a `.env` file in the root directory and populate it with your credentials:
+   ```env
+   VITE_OPENWEATHER_API_KEY=your_api_key_here
+   VITE_YOUTUBE_API_KEY=your_api_key_here
+   ```
+
+4. **Execute Local Development Server:**
+   ```bash
+   npm run dev
+   ```
+
+## License
 
 This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**.
-- **Attribution**: You must give appropriate credit to **Tarunya Kesharwani**.
-- **Non-Commercial**: You may not use this material for commercial purposes.
+- **Attribution**: You must provide appropriate credit to **Tarunya Kesharwani**.
+- **Non-Commercial**: This software may not be used for commercial purposes.
 
 ---
 © 2026 Tarunya Kesharwani. All Rights Reserved.
