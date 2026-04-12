@@ -1,11 +1,11 @@
 # 🌊 MoodCast
 
 **Author:** Tarunya Kesharwani  
-**Live Demo:** [Check it out on GitHub Pages / Vercel]
+**Live Demo:** [tarunya-moodcast.vercel.app](https://tarunya-moodcast.vercel.app/)
 
 MoodCast is a premium, **dark-mode-first** music discovery platform that uses a proprietary "Synergy Engine" to curate the perfect playlist based on your **current weather** and **internal mood**.
 
-![MoodCast Preview Screenshot](/.gemini/antigravity/brain/7e34600a-1b5c-458b-b0f8-1d4459ff9e15/moodcast_preview_1774011491303.png)
+![MoodCast Preview Screenshot](./public/PreView.png)
 
 ## ✨ Key Features
 
