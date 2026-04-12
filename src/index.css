@@ -547,6 +547,12 @@ body {
   .steps-container > div { flex: 1 1 calc(50% - 1rem); }
 }
 
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
 .mood-btn {
   background: var(--nm-bg);
   box-shadow: 6px 6px 12px var(--nm-shadow-main), 
