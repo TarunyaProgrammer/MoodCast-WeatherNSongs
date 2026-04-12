@@ -20,8 +20,6 @@ const SongCard = ({ song, onSelect, onFavoriteToggle, favorites }) => {
       >
         <Heart size={18} fill={isFavorite ? 'var(--accent)' : 'none'} color={isFavorite ? 'var(--accent)' : 'currentColor'} />
       </button>
-        <Heart size={18} fill={isFavorite ? '#ff4b4b' : 'none'} />
-      </button>
 
       <img 
         src={thumbnails.medium.url} 

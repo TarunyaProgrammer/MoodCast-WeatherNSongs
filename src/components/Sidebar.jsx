@@ -43,18 +43,16 @@ const Sidebar = ({ activeTab, onTabChange, isDarkMode, toggleTheme }) => {
           <span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
         </button>
 
-        <div style={{ 
-          marginTop: '1.5rem', 
-          padding: '1rem', 
-          borderRadius: '1rem', 
-          background: 'var(--glass-bg)',
+        <div className="nm-pressed" style={{ 
+          marginTop: '2rem', 
+          padding: '0.75rem', 
           textAlign: 'center',
-          fontSize: '0.7rem',
+          fontSize: '0.65rem',
           color: 'var(--subtext)',
-          border: '1px solid var(--glass-border)'
+          letterSpacing: '0.1em',
+          textTransform: 'uppercase'
         }}>
-          <p>Created with ❤️ by</p>
-          <p style={{ color: 'var(--accent)', fontWeight: '600', marginTop: '0.25rem' }}>Tarunya Kesharwani</p>
+          Curated by <span style={{ color: 'var(--accent)', fontWeight: '700' }}>Tarunya</span>
         </div>
       </div>
     </aside>
