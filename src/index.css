@@ -231,11 +231,14 @@ body {
 .btn-search {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   cursor: pointer;
   color: var(--text);
-  font-weight: 600;
+  font-weight: 700;
+  border-radius: 1.25rem;
+  transition: var(--nm-transition);
 }
 
 .btn-search:active {
